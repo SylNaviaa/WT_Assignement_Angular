@@ -1,10 +1,7 @@
 <div *ngFor="let question of questions">
-    <h2>{{ question.title }}</h2>
-    <p>{{ question.description }}</p>
-  </div>
-
-  <h2>{{ questions }}</h2>
-  <!-- <p>{{ questions.description }}</p> -->
-
-  Question PAGE
-  
+  <h3>{{ question.questionTitle }}</h3>
+  <p>{{ question.questionBody }}</p>
+  <p>Tags: {{ question.questionTags.join(', ') }}</p>
+  <p>No. of Answers: {{ question.noOfAnswers }}</p>
+  <p>User Posted: {{ question.userPosted }}</p>
+</div>

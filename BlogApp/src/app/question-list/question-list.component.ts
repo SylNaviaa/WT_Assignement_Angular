@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 
 interface Question {
   _id: number;
