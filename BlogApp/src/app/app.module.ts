@@ -1,18 +1,25 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { ReactiveFormsModule } from '@angular/forms';
 
+
+import { AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
-import { QuestionListComponent } from './question-list/question-list.component'; // Import QuestionListComponent
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionListComponent // Add QuestionListComponent to declarations
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    CommonModule // Add CommonModule here
+    AppRoutingModule,
+    FormsModule, // Add FormsModule here
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
