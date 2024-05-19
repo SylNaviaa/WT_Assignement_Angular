@@ -94,6 +94,14 @@ svg:hover {
   fill: #2196F3;
 }
 
+.container input:checked[type="checkbox"]#upvoteCheckbox~svg {
+  fill: #8bf0a2; /* Soft green */
+}
+
+.container input:checked[type="checkbox"]#downvoteCheckbox~svg {
+  fill: #f08b8b; /* Soft red */
+}
+
 .container input {
   position: absolute;
   opacity: 0;
@@ -108,14 +116,6 @@ svg:hover {
   cursor: pointer;
   user-select: none;
 }
-
-.container input:checked~svg {
-  fill: rgb(185, 51, 51);
-}
-
-
-
-
 
 .card-question {
   width: 100%;
@@ -175,4 +175,41 @@ svg:hover {
   margin: 4%;
   color: var(--secondary-color);
   font-size: 1.0rem;
+}
+
+/* Adjusted sizes for SVG */
+.container svg {
+  height: 40px; /* Adjust the height */
+  width: 40px; /* Adjust the width */
+}
+
+/* Positioning and styling for the digit */
+.container .digit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem; /* Adjust font size */
+  font-weight: bold;
+}
+
+/* Additional styling for upvote and downvote containers */
+#upvoteContainer {
+  margin-right: 10px; /* Adjust margin */
+}
+
+#downvoteContainer {
+  margin-left: 10px; /* Adjust margin */
+}
+
+.card-question {
+  position: relative;
+}
+
+.digit {
+  position: absolute;
+  top: 10%; /* Adjust the top position as needed */
+  right: 1px; /* Align to the right */
+  transform: translateY(-50%);
+  font-size: 1rem; /* Adjust font size as needed */
 }
