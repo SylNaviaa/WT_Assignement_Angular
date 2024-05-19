@@ -1,30 +1,27 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md">
   <a class="navbar-brand" href="javascript:void(0);" routerLink="/">JVLcode</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-  <ul class="navbar-nav mr-auto"  >
+    <ul class="navbar-nav mr-auto">
 
-    <ng-container *ngIf="this.auth.isAuthenticated();then authenticated;else notAuthenticated">
-
-    </ng-container>
+      <ng-container *ngIf="this.auth.isAuthenticated();then authenticated;else notAuthenticated">
+      </ng-container>
 
       <ng-template #notAuthenticated>
-        <li class="nav-item"><a href="javascript:void(0);" routerLink="/register"  class="nav-link" >Register</a></li>
-        <li><a class="nav-link" href="javascript:void(0);" routerLink="/login" >Login</a></li>
+        <li class="nav-item"><a href="javascript:void(0);" routerLink="/register" class="nav-link"><i class="fas fa-user-plus"></i> Register</a></li>
+        <li class="nav-item"><a href="javascript:void(0);" routerLink="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
       </ng-template>
 
       <ng-template #authenticated>
-        <li class="nav-item"><a href="javascript:void(0);" routerLink="/create-question" class="nav-link" >Ask a question</a></li>
-        <li class="nav-item"><a href="javascript:void(0);" routerLink="/my-question-list" class="nav-link" >My Questions</a></li>
-        <li class="nav-item"><a href="javascript:void(0);" routerLink="/question-list" class="nav-link" >Community Questions</a></li>
-        <li class="nav-item"><a href="javascript:void(0);" routerLink="/profile" class="nav-link" >Profile</a></li>
-        <li><a class="nav-link" href="javascript:void(0);"  (click)="logout()" >Logout</a></li>
+        <li class="nav-item"><a href="javascript:void(0);" routerLink="/create-question" class="nav-link"><i class="fas fa-question-circle"></i> Ask a question</a></li>
+        <li class="nav-item"><a href="javascript:void(0);" routerLink="/my-question-list" class="nav-link"><i class="fas fa-list"></i> My Questions</a></li>
+        <li class="nav-item"><a href="javascript:void(0);" routerLink="/question-list" class="nav-link"><i class="fas fa-users"></i> Community Questions</a></li>
+        <li class="nav-item"><a href="javascript:void(0);" routerLink="/profile" class="nav-link"><i class="fas fa-user"></i> Profile</a></li>
+        <li class="nav-item"><a href="javascript:void(0);" (click)="logout()" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
       </ng-template>
 
-
-  </ul>
-
+    </ul>
   </div>
 </nav>

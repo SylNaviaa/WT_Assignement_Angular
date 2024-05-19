@@ -1,11 +1,106 @@
-.login-block{
-  float:left;
-  width:100%;
-  padding : 50px 0;
+/* Error message */
+.text-danger {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: 4px;
 }
 
-.container{background:#D3D3D3; border-radius: 10px; width: 40%; height: 40%;}
-.login-sec{padding: 50px 30px; position:relative;}
-.login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #0069c0;}
-.login-sec h2:after{content:" "; width:100px; height:5px; background:#6ec6ff; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
-.btn-login{background: #0069c0; color:#fff; font-weight:600;}
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Form box */
+.form-box {
+  max-width: 300px;
+  background: #f1f7fe;
+  overflow: hidden;
+  border-radius: 16px;
+  color: #010101;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form */
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px 24px;
+  gap: 16px;
+  text-align: center;
+}
+
+/* Form title */
+.title {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+/* Form subtitle */
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Form container */
+.form-container {
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 1rem 0 .5rem;
+  width: 100%;
+}
+
+/* Form input */
+.input {
+  background: none;
+  border: 0;
+  outline: 0;
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+  padding: 8px 15px;
+}
+
+/* Form section */
+.form-section {
+  padding: 16px;
+  font-size: 0.85rem;
+  background-color: #e0ecfb;
+  box-shadow: rgba(0, 0, 0, 0.08) 0 -1px;
+}
+
+/* Form section link */
+.form-section a {
+  font-weight: bold;
+  color: #0066ff;
+  transition: color .3s ease;
+}
+
+/* Form section link hover */
+.form-section a:hover {
+  color: #005ce6;
+  text-decoration: underline;
+}
+
+/* Form button */
+.form button {
+  background-color: #0066ff;
+  color: #fff;
+  border: 0;
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .3s ease;
+}
+
+/* Form button hover */
+.form button:hover {
+  background-color: #005ce6;
+}
