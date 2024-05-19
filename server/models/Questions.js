@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const QuestinSchema = mongoose.Schema({
     questionTitle: { type: String, required: "Question must have a title" },
     questionBody: { type: String, required: "Question must have a body" },
-    questionTags: { type: [String], required: "Question must have a tags" },
     noOfAnswers: { type: Number, default: 0 },
     upVote: { type: [String], default: [] },
     downVote: { type: [String], default: [] },
