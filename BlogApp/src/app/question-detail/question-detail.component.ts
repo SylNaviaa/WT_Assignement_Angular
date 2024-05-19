@@ -136,7 +136,10 @@ export class QuestionDetailComponent implements OnInit {
       this.question.answer.forEach((answer: any) => {
         this.answerService.getNumberVoteAnswer(questionId, answer._id).subscribe({
           next: (data: any) => {
-            answer.voteCount = data.voteCount; // Update answer with vote count
+             // Update answer with vote count
+            answer.numberOfUpVotes = data.noOfUpVote;
+            answer.numberOfDownVotes = data.noOfDownVote;
+            answer.voteCount = answer.numberOfUpVotes - answer.numberOfDownVotes;
           },
           error: (error) => {
             console.error('Error fetching vote count for answer:', error);

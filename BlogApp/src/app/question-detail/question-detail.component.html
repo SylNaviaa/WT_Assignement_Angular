@@ -63,7 +63,7 @@
 
       <h1 class="titlePage">Answers</h1>
       <div *ngFor="let answer of question.answer" class="card-question">
-        <div class="digit">{{ answer.voteDifference }}</div>
+        <div class="digit">{{ answer.voteCount }}</div>
         <div class="card__content">{{ answer.answerBody }} </div>
         <div class="questionNumberAnswer">Answered By: {{ answer.userName }}</div>
         <div class="card__date">{{ answer.answeredOn| date:'medium' }} </div>
