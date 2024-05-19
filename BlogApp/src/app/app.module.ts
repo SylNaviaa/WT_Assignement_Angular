@@ -14,6 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { CreateQuestionComponent } from './create-question/create-question.component'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const routes:Routes = [
   {path:'',component:HomeComponent },
@@ -44,7 +45,8 @@ const routes:Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
