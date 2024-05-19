@@ -167,19 +167,3 @@ body {
   border-radius: 16px;
 }
 
-.form-submit-btn {
-  background: #4285f4;
-  /* Blue button background */
-  color: white;
-  /* White button text color */
-  border: 1px solid #4285f4;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  /* Blue button border */
-}
-
-.form-submit-btn:hover {
-  background-color: #0d47a1;
-  /* Darker blue on hover */
-  border-color: #0d47a1;
-  /* Darker blue border on hover */
-}
