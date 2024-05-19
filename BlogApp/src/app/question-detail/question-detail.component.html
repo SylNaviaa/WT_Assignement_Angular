@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<h2>Question Detail</h2>
+
+<div *ngIf="question">
+  <h2>{{ question.questionTitle }}</h2>
+  <p>{{ question.questionBody }}</p>
+  <p>Author: {{ question.userName }}</p>
+  <p>No of Answers: {{ question.noOfAnswers }}</p>
+  <p>Asked On: {{ question.askedOn | date:'medium' }}</p> <!-- Format date -->
+  <hr>
+
+  <!-- My Answer Section -->
+  <h3>My Answer</h3>
+  <div *ngIf="myAnswers.length > 0"> <!-- Check if myAnswers array has elements -->
+    <div *ngFor="let myAnswer of myAnswers"> <!-- Iterate over myAnswers -->
+      <p>{{ myAnswer.answerBody }}</p>
+      <p>Answered On: {{ myAnswer.answeredOn | date:'medium' }}</p> <!-- Format date -->
+      <button (click)="deleteAnswer(myAnswer._id)">Delete</button>
+      <button (click)="editAnswer(myAnswer)">Edit</button> <!-- Add an edit button -->
+      <hr>
+    </div>
+  </div>
+  <!-- Edit answer form -->
+  <div *ngIf="editingAnswer">
+    <h3>Edit Answer</h3>
+    <form (submit)="saveEditedAnswer()">
+      <div class="form-group">
+        <label for="editAnswerBody">Edit Your Answer:</label>
+        <textarea class="form-control" id="editAnswerBody" rows="5" [(ngModel)]="newAnswerBody"
+          name="newAnswerBody"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+
+  <!-- Answers from Everyone Else -->
+  <h3>Answers</h3>
+  <div *ngFor="let answer of question.answer">
+    <p>{{ answer.answerBody }}</p>
+    <p>Answered By: {{ answer.userName }}</p>
+    <p>Answered On: {{ answer.answeredOn | date:'medium' }}</p> <!-- Format date -->
+    <button (click)="voteAnswer(answer._id, 'upVote')">Upvote</button>
+    <button (click)="voteAnswer(answer._id, 'downVote')">Downvote</button>
+    <hr>
+  </div>
+
+  <!-- Form to Submit New Answer -->
+  <form (submit)="submitAnswer()">
+    <div class="form-group">
+      <label for="answerBody">Your Answer:</label>
+      <textarea class="form-control" id="answerBody" rows="5" [(ngModel)]="newAnswerBody"
+        name="newAnswerBody"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Answer</button>
+  </form>
+</div>
