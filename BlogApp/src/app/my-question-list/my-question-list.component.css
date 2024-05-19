@@ -1,308 +1,307 @@
-.btn-shine {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 12px 48px;
-    color: #fff;
-    background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
-    background-position: 0;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 3s infinite linear;
-    animation-fill-mode: forwards;
-    -webkit-text-size-adjust: none;
-    font-weight: 600;
-    font-size: 24px;
-    text-decoration: none;
-    white-space: nowrap;
-    font-family: "Poppins", sans-serif;
-  }
-  @-moz-keyframes shine {
-    0% {
-      background-position: 0;
-    }
-    60% {
-      background-position: 180px;
-    }
-    100% {
-      background-position: 180px;
-    }
-  }
-  @-webkit-keyframes shine {
-    0% {
-      background-position: 0;
-    }
-    60% {
-      background-position: 180px;
-    }
-    100% {
-      background-position: 180px;
-    }
-  }
-  @-o-keyframes shine {
-    0% {
-      background-position: 0;
-    }
-    60% {
-      background-position: 180px;
-    }
-    100% {
-      background-position: 180px;
-    }
-  }
-  @keyframes shine {
-    0% {
-      background-position: 0;
-    }
-    60% {
-      background-position: 180px;
-    }
-    100% {
-      background-position: 180px;
-    }
-  }
-  
+button {
+  border: none;
+  display: block;
+  position: relative;
+  padding: 0.7em 2.4em;
+  font-size: 18px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  color: royalblue;
+  z-index: 1;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+button span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+  border: 4px solid royalblue;
+}
+
+button span::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8%;
+  height: 500%;
+  background: var(--lightgray);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-60deg);
+  transition: all 0.3s;
+}
+
+button:hover span::before {
+  transform: translate(-50%, -50%) rotate(-90deg);
+  width: 100%;
+  background: royalblue;
+}
+
+button:hover {
+  color: white;
+}
+
+button:active span::before {
+  background: #2751cd;
+}
 
 .bin-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background-color: rgb(255, 95, 95);
-    cursor: pointer;
-    border: 2px solid rgb(255, 201, 201);
-    transition-duration: 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .bin-bottom {
-    width: 15px;
-    z-index: 2;
-  }
-  .bin-top {
-    width: 17px;
-    transform-origin: right;
-    transition-duration: 0.3s;
-    z-index: 2;
-  }
-  .bin-button:hover .bin-top {
-    transform: rotate(45deg);
-  }
-  .bin-button:hover {
-    background-color: rgb(255, 0, 0);
-  }
-  .bin-button:active {
-    transform: scale(0.9);
-  }
-  .garbage {
-    position: absolute;
-    width: 14px;
-    height: auto;
-    z-index: 1;
-    opacity: 0;
-    transition: all 0.3s;
-  }
-  .bin-button:hover .garbage {
-    animation: throw 0.4s linear;
-  }
-  @keyframes throw {
-    from {
-      transform: translate(-400%, -700%);
-      opacity: 0;
-    }
-    to {
-      transform: translate(0%, 0%);
-      opacity: 1;
-    }
-  }
-  
-  
-  @keyframes throw {
-    from {
-      transform: translate(-400%, -700%);
-      opacity: 0;
-    }
-    to {
-      transform: translate(0%, 0%);
-      opacity: 1;
-    }
-  }
-  
-  /* Existing Card and Button Styling */
-  .card {
-    width: auto; /* Adjust width to auto to fit content */
-    max-width: 100%; /* Ensure it doesn't overflow */
-    margin: 4rem auto; /* Center and space out cards */
-    padding: 1rem; /* Add padding for content inside the card */
-    background: rgb(236, 236, 236);
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    border-radius: 8px; /* Optional: Add border-radius for rounded corners */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .card-buttons {
-    display: flex;
-    justify-content: flex-end; /* Align buttons to the right */
-    gap: 0.5rem; /* Space between buttons */
-  }
-  
-  .card-button {
-    padding: 0.5em 1em; /* Smaller padding for smaller buttons */
-    font-size: 14px; /* Smaller font size */
-  }
-  
-  /* Existing styles for bin-button and other components remain unchanged */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: rgb(255, 95, 95);
+  cursor: pointer;
+  border: 2px solid rgb(255, 201, 201);
+  transition-duration: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
 
-/* New Animated Button Styling */
-.animated-button {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 16px 36px;
-    border: 4px solid;
-    border-color: transparent;
-    font-size: 16px;
-    background-color: transparent; /* You had left this property empty */
-    border-radius: 100px;
-    font-weight: 600;
-    color: #1f387e;
-    box-shadow: 0 0 0 2px #ffffff;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button svg {
-    position: absolute;
-    width: 24px;
-    fill: #1f387e;
-    z-index: 9;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button .arr-1 {
-    right: 16px;
-  }
-  
-  .animated-button .arr-2 {
-    left: -25%;
-  }
-  
-  .animated-button .circle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background-color: #c5e5e4;
-    border-radius: 50%;
+.bin-bottom {
+  width: 15px;
+  z-index: 2;
+}
+
+.bin-top {
+  width: 17px;
+  transform-origin: right;
+  transition-duration: 0.3s;
+  z-index: 2;
+}
+
+.bin-button:hover .bin-top {
+  transform: rotate(45deg);
+}
+
+.bin-button:hover {
+  background-color: rgb(255, 0, 0);
+}
+
+.bin-button:active {
+  transform: scale(0.9);
+}
+
+.garbage {
+  position: absolute;
+  width: 14px;
+  height: auto;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.bin-button:hover .garbage {
+  animation: throw 0.4s linear;
+}
+
+@keyframes throw {
+  from {
+    transform: translate(-400%, -700%);
     opacity: 0;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   }
-  
-  .animated-button .text {
-    position: relative;
-    z-index: 1;
-    transform: translateX(-12px);
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button:hover {
-    box-shadow: 0 0 0 12px transparent;
-    color: #212121;
-    border-radius: 12px;
-  }
-  
-  .animated-button:hover .arr-1 {
-    right: -25%;
-  }
-  
-  .animated-button:hover .arr-2 {
-    left: 16px;
-  }
-  
-  .animated-button:hover .text {
-    transform: translateX(12px);
-  }
-  
-  .animated-button:hover svg {
-    fill: #1f387e;
-  }
-  
-  .animated-button:active {
-    scale: 0.95;
-    box-shadow: 0 0 0 4px greenyellow;
-  }
-  
-  .animated-button:hover .circle {
-    width: 220px;
-    height: 220px;
+
+  to {
+    transform: translate(0%, 0%);
     opacity: 1;
   }
-  
-  /* Existing styles for .styled-button remain unchanged */
-.styled-button {
-    border: none;
-    display: block;
-    position: relative;
-    padding: 0.5em 1em;
-    font-size: 15px;
-    background: transparent;
-    cursor: pointer;
-    user-select: none;
-    overflow: hidden;
-    color: royalblue;
-    z-index: 1;
-    font-family: inherit;
-    font-weight: 500;
-    top: 60px; /* Add 5 pixels to move the button down */
-    left: 5px; /* Add 5 pixels to move the button to the right */
+}
+
+
+@keyframes throw {
+  from {
+    transform: translate(-400%, -700%);
+    opacity: 0;
   }
-  
-  .styled-button span {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    z-index: -1;
-    border: 4px solid royalblue;
+
+  to {
+    transform: translate(0%, 0%);
+    opacity: 1;
   }
-  
-  .styled-button span::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 8%;
-    height: 500%;
-    background: var(--lightgray);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-60deg);
-    transition: all 0.3s;
-  }
-  
-  .styled-button:hover span::before {
-    transform: translate(-50%, -50%) rotate(-90deg);
-    width: 100%;
-    background: royalblue;
-  }
-  
-  .styled-button:hover {
-    color: white;
-  }
-  
-  .styled-button:active span::before {
-    background: #2751cd;
-  }
-  
+}
+
+
+/* Your existing CSS for other components */
+.flex {
+  display: flex;
+  padding-top: 1%;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.btn-shine {
+  margin-bottom: 20px;
+  /* Space between the title and search bar */
+}
+
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+  /* Space between search bar and questions */
+}
+
+.questions-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  /* Space between question cards */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f3f3f4;
+  /* Optional: Change background color */
+}
+
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 300px;
+  /* Increase width for better appearance */
+  margin-bottom: 30px;
+  /* Space between search bar and questions */
+}
+
+.questions-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  /* Space between question cards */
+}
+
+.card {
+  --border-radius: 0.75rem;
+  --primary-color: #7257fa;
+  --secondary-color: #3c3852;
+  width: 300px;
+  /* Adjust width for larger cards */
+  font-family: "Arial";
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  background: #f1f1f3;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 3%);
+  position: relative;
+  margin: 1rem;
+  /* Optional: Adjust margin */
+}
+
+/* Other existing CSS */
+.input {
+  width: 100%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: 0.3s ease;
+}
+
+.input::placeholder {
+  color: #9e9ea7;
+}
+
+.input:focus,
+.input:hover {
+  outline: none;
+  border-color: rgba(247, 127, 0, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(247 127 0 / 10%);
+}
+
+.icon {
+  position: absolute;
+  left: 1rem;
+  fill: #9e9ea7;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Hover effects and other styles for cards */
+.card>*+* {
+  margin-top: 1.1em;
+}
+
+.card .card__content {
+  color: var(--secondary-color);
+  font-size: 0.86rem;
+}
+
+.card .card__title {
+  padding: 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.card .card__date {
+  color: #6e6b80;
+  font-size: 0.8rem;
+}
+
+.card .card__arrow {
+  position: absolute;
+  background: var(--primary-color);
+  padding: 0.4rem;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  bottom: 0;
+  right: 0;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card svg {
+  transition: 0.2s;
+}
+
+/* hover */
+.card:hover .card__title {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.card:hover .card__arrow {
+  background: #111;
+}
+
+.card:hover .card__arrow svg {
+  transform: translateX(3px);
+}
