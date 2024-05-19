@@ -1,7 +1,14 @@
+<app-navbar></app-navbar>
+
+<div>
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search by title">
+  <button (click)="searchQuestions()">Search</button>
+</div>
+
+<h2>Community Questions</h2>
 <div *ngFor="let question of questions">
   <h3>{{ question.questionTitle }}</h3>
   <p>{{ question.questionBody }}</p>
-  <p>Tags: {{ question.questionTags.join(', ') }}</p>
-  <p>No. of Answers: {{ question.noOfAnswers }}</p>
-  <p>User Posted: {{ question.userPosted }}</p>
+  <button (click)="viewQuestionDetail(question._id)">View Details</button>
+  <hr>
 </div>

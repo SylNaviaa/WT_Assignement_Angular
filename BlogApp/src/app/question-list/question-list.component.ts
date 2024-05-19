@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-
-interface Question {
-  _id: number;
-  questionTitle: string;
-  questionBody: string;
-}
+import { AuthService } from '../_services/auth.service';
+import { QuestionService } from '../_services/question.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question-list',
@@ -14,19 +9,47 @@ interface Question {
   styleUrls: ['./question-list.component.css']
 })
 export class QuestionListComponent implements OnInit {
-  questions: Question[] = [];
 
-  constructor(private http: HttpClient) {}
+  questions: any[] = [];
+  searchQuery: string = '';
+
+  constructor(private auth: AuthService, private questionService: QuestionService, private router: Router) { }
 
   ngOnInit(): void {
-    this.http.get<Question[]>('http://localhost:5000/questions/get').subscribe(
-      (data) => {
+    this.auth.canAccess();
+    if (this.auth.isAuthenticated()) {
+      this.loadAllQuestions();
+    }
+  }
+
+  loadAllQuestions() {
+    this.questionService.getAllQuestions().subscribe({
+      next: (data: any[]) => {
         this.questions = data;
-        console.log(data);
       },
-      (error) => {
-        console.error('Error fetching questions', error);
+      error: (error) => {
+        console.error('Error fetching questions:', error);
       }
-    );
+    });
+  }
+
+  searchQuestions() {
+    if (this.searchQuery.trim() === '') {
+      this.loadAllQuestions(); // Reload all questions if search query is empty
+    } else {
+      this.questionService.getQuestionsByTitle(this.searchQuery).subscribe({
+        next: (data: any[]) => {
+          this.questions = data;
+        },
+        error: (error) => {
+          console.error('Error searching questions:', error);
+        }
+      });
+    }
+  }
+
+  viewQuestionDetail(questionId: string) {
+    console.log('View question detail:', questionId);
+    this.router.navigate(['/question-detail', questionId]);
   }
 }

@@ -1,35 +1,45 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  token: string | undefined;
+export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient) {}
+  formdata = { email: "", password: "" };
+  submit = false;
+  loading = false;
+  errorMessage = "";
 
-  loginUser(): void {
-    const userData = {
-      user: this.username,
-      password: this.password
-    };
+  constructor(private auth: AuthService) { }
 
-    this.http.post<any>('http://localhost:5000/user/login', userData)
-      .subscribe(
-        (response) => {
-          console.log('Login successful', response);
-          this.token = response.token; // Assuming the token is returned in the response
-          // Optionally, navigate to another page after successful login
+  ngOnInit(): void {
+    this.auth.canAuthenticate();
+  }
+
+  onSubmit() {
+    this.loading = true;
+    // call login service
+    this.auth.login(this.formdata.email, this.formdata.password)
+      .subscribe({
+        next: data => {
+          // store token
+          this.auth.storeToken(data.token);
+          console.log('Logged user token is ' + data.token);
+          this.auth.canAuthenticate();
         },
-        (error) => {
-          console.error('Login failed', error);
-          // Handle error, display error message, etc.
+        error: data => {
+          if (data.error.message === "User don't exist" || data.error.message === "Incorrect password") {
+            this.errorMessage = "Invalid Credentials!";
+          } else {
+            this.errorMessage = "Unknown error when logging into this account!";
+          }
         }
-      );
+      }).add(() => {
+        this.loading = false;
+        console.log('Login process completed!');
+      });
   }
 }

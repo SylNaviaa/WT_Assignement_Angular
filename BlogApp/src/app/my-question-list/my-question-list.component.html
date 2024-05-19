@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+
+<h2>My Questions</h2>
+<button (click)="createQuestion()">Create Question</button>
+<div *ngFor="let question of questions">
+  <h3>{{ question.questionTitle }}</h3>
+  <p>{{ question.questionBody }}</p>
+  <button (click)="viewQuestionDetail(question._id)">View Details</button>
+  <button (click)="deleteQuestion(question._id)">Delete</button>
+  <hr>
+</div>

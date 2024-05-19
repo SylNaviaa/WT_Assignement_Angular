@@ -1,35 +1,45 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
-  email: string = '';
-  name: string = '';
-  password: string = '';
+export class RegisterComponent implements OnInit {
 
-  constructor(private http: HttpClient) {}
+  formdata = { name: "", email: "", password: "" };
+  submit = false;
+  errorMessage = "";
+  loading = false;
 
-  registerUser(): void {
-    const userData = {
-      email: this.email,
-      name: this.name,
-      password: this.password
-    };
+  constructor(private auth: AuthService) { }
 
-    this.http.post('http://localhost:5000/user/signup', userData)
-      .subscribe(
-        (response) => {
-          console.log('Registration successful', response);
-          // Optionally, navigate to another page after successful registration
-        },
-        (error) => {
-          console.error('Registration failed', error);
-          // Handle error, display error message, etc.
+  ngOnInit(): void {
+    this.auth.canAuthenticate();
+  }
+
+  onSubmit() {
+    this.loading = true;
+
+    // Call register service
+    this.auth.register(this.formdata.name, this.formdata.email, this.formdata.password).subscribe({
+      next: data => {
+        // Store token from response data
+        this.auth.storeToken(data.token);
+        console.log('Registered token is ' + data.token);
+        this.auth.canAuthenticate();
+      },
+      error: data => {
+        if (data.error.message === "User already exist") {
+          this.errorMessage = "Already Email Exists!";
+        } else {
+          this.errorMessage = "Unknown error occurred when creating this account!";
         }
-      );
+      }
+    }).add(() => {
+      this.loading = false;
+      console.log('Register process completed!');
+    });
   }
 }
