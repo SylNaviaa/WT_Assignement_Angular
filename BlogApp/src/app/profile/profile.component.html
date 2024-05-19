@@ -3,7 +3,7 @@
   <div class="container">
     <div class="text-center mt-5">
       <div *ngIf="!loading && user.name">
-        <h1>Profile</h1>
+        <h1 class="titlePage">Profile</h1>
 
         <div class="profile-container">
         <div class="form-box">
@@ -34,8 +34,10 @@
       <!-- community.component.html -->
 
 
+      <!-- Add a line here -->
+      <hr class="section-divider">
 
-      <h1>Community</h1>
+      <h1 class="titlePage">Community</h1>
       <div class="questions-container">
         <div *ngFor="let user of users" class="card">
           <h3 class="card__title">{{ user.name }}</h3>
