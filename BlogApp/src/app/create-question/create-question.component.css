@@ -9,27 +9,6 @@
   margin-top: 5%;
 }
 
-button {
-  border: 2px solid #69a5ff;
-  background-color: #69a5ff;
-  border-radius: 0.9em;
-  padding: 0.8em 1.2em 0.8em 1em;
-  transition: all ease-in-out 0.2s;
-  font-size: 16px;
-}
-
-button span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-weight: 600;
-}
-
-button:hover {
-  background-color: #0066ff;
-}
-
 
 .flex {
   display: flex;
@@ -139,10 +118,9 @@ body {
 .input:focus,
 .input:hover {
   outline: none;
-  border-color: #4285f4;
   /* Change to blue theme */
   background-color: #fff;
-  box-shadow: 0 0 0 4px rgb(66 133 244 / 10%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   /* Change to blue theme */
 }
 
@@ -167,10 +145,9 @@ body {
 .inputBody:focus,
 .inputBody:hover {
   outline: none;
-  border-color: #4285f4;
   /* Change to blue theme */
   background-color: #fff;
-  box-shadow: 0 0 0 4px rgb(66 133 244 / 10%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   /* Change to blue theme */
 }
 
@@ -178,14 +155,11 @@ body {
 .form-container {
   width: 1000px;
   background: #f4f9ff;
-  /* Lighter background */
-  border: 2px solid #4285f4;
-  /* Blue border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 32px 24px;
   font-size: 14px;
   font-family: inherit;
   color: #0d0c22;
-  /* Darker text color */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -199,6 +173,7 @@ body {
   color: white;
   /* White button text color */
   border: 1px solid #4285f4;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   /* Blue button border */
 }
 

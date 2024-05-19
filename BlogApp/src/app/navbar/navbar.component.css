@@ -1,10 +1,15 @@
 .navbar {
   background-color: #f1f7fe;
+  border-radius: 16px; /* Adjust the radius as needed */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adjust the shadow as needed */
+  margin-bottom: 2%;
+  margin-top: 2%;
 }
 
 .navbar-brand {
   color: #555; /* Adjusted to a lighter grey */
   font-weight: bold;
+  margin-right: 10%;
 }
 
 .navbar-toggler {
@@ -20,7 +25,8 @@
 }
 
 .navbar-nav .nav-link {
-  color: #555; /* Adjusted to a lighter grey */
+  color: #555;
+  font-weight: bold; /* Adjusted to a lighter grey */
 }
 
 .navbar-nav .nav-link:hover {
