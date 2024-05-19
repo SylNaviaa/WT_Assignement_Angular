@@ -111,15 +111,10 @@ export const voteAnswer = async (req, res) => {
     }
 
     try {
-        const question = await Questions.findById(_id);
-        const answer = question.answers.find((ans) => ans._id == answerId);
-        
-        if (!answer) {
-            return res.status(404).send('answer not found...');
-        }
-
+        const question = await Questions.findById(_id)
+        const answer = question.answer.find((ans) => ans._id == answerId)
         if (answer.userId === userId) {
-            return res.status(401).send('You cannot vote on your own answer...');
+            return res.status(401).send('You can not vote your answer...')
         }
 
         const hasUpvoted = answer.upVote.includes(userId);
@@ -127,10 +122,8 @@ export const voteAnswer = async (req, res) => {
 
         if (voteType === 'upVote') {
             if (hasUpvoted) {
-                // Remove upvote
                 answer.upVote = answer.upVote.filter((id) => id !== userId);
             } else {
-                // Remove downvote if exists, then add upvote
                 answer.downVote = answer.downVote.filter((id) => id !== userId);
                 if (!hasDownvoted) {
                     answer.upVote.push(userId);
@@ -138,10 +131,8 @@ export const voteAnswer = async (req, res) => {
             }
         } else if (voteType === 'downVote') {
             if (hasDownvoted) {
-                // Remove downvote
                 answer.downVote = answer.downVote.filter((id) => id !== userId);
             } else {
-                // Remove upvote if exists, then add downvote
                 answer.upVote = answer.upVote.filter((id) => id !== userId);
                 if (!hasUpvoted) {
                     answer.downVote.push(userId);
@@ -150,13 +141,13 @@ export const voteAnswer = async (req, res) => {
         } else {
             return res.status(404).send('Invalid vote type...');
         }
-
-        await question.save();  // Save the updated question
-        res.status(200).json(question);
+        await Questions.findByIdAndUpdate(_id, question)
+        res.status(200).json(question)
     } catch (error) {
-        res.status(404).json({ message: error.message });
+        res.status(404).json(error)
     }
-};
+}
+
 
 export const getNumberVoteAnswer = async (req, res) => {
     const { id: _id } = req.params;
