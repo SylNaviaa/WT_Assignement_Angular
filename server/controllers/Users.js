@@ -6,7 +6,7 @@ export const getAllUsers = async (req, res) => {
         const allUsers = await User.find();
         const allUsersDetails = []
         allUsers.forEach(users => {
-            allUsersDetails.push({ _id: users._id, name: users.name, about: users.about, tags: users.tags, joinedOn: users.joinedOn })
+            allUsersDetails.push({ _id: users._id, name: users.name, joinedOn: users.joinedOn })
         })
         res.status(200).json(allUsersDetails);
     }
@@ -26,9 +26,9 @@ export const getUser = async (req, res) => {
 }
 
 export const updateProfile = async (req, res) => {
-    const { name, about, tags } = req.body;
+    const { name } = req.body;
     try {
-        const updatedProfile = await User.findByIdAndUpdate(req.userId, { $set: { 'name': name, 'about': about, 'tags': tags } }, { new: true })
+        const updatedProfile = await User.findByIdAndUpdate(req.userId, { $set: { 'name': name } }, { new: true })
         res.status(200).json(updatedProfile)
     }
     catch (error) {
