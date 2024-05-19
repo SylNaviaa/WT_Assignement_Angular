@@ -49,7 +49,6 @@ export class QuestionListComponent implements OnInit {
   }
 
   viewQuestionDetail(questionId: string) {
-    console.log('View question detail:', questionId);
     this.router.navigate(['/question-detail', questionId]);
   }
 }

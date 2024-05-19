@@ -26,7 +26,6 @@ export class MyQuestionListComponent implements OnInit {
     this.questionService.getMyQuestions().subscribe({
       next: (data: any[]) => {
         this.questions = data;
-        console.log('My questions:', this.questions);
       },
       error: (error) => {
         console.error('Error fetching my questions:', error);
@@ -35,7 +34,6 @@ export class MyQuestionListComponent implements OnInit {
   }
 
   viewQuestionDetail(questionId: string) {
-    console.log('View question detail:', questionId);
     this.router.navigate(['/question-detail', questionId]);
   }
 
@@ -45,7 +43,6 @@ export class MyQuestionListComponent implements OnInit {
         next: () => {
           // Remove the deleted question from the list
           this.questions = this.questions.filter(question => question._id !== questionId);
-          console.log('Question deleted successfully.');
         },
         error: (error) => {
           console.error('Error deleting question:', error);

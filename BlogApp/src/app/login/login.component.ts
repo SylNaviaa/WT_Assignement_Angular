@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
         next: data => {
           // store token
           this.auth.storeToken(data.token);
-          console.log('Logged user token is ' + data.token);
           this.auth.canAuthenticate();
         },
         error: data => {
@@ -39,7 +38,6 @@ export class LoginComponent implements OnInit {
         }
       }).add(() => {
         this.loading = false;
-        console.log('Login process completed!');
       });
   }
 }

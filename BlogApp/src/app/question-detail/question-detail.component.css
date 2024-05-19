@@ -183,15 +183,7 @@ svg:hover {
   width: 40px; /* Adjust the width */
 }
 
-/* Positioning and styling for the digit */
-.container .digit {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.8rem; /* Adjust font size */
-  font-weight: bold;
-}
+
 
 /* Additional styling for upvote and downvote containers */
 #upvoteContainer {
@@ -209,7 +201,9 @@ svg:hover {
 .digit {
   position: absolute;
   top: 10%; /* Adjust the top position as needed */
-  right: 1px; /* Align to the right */
-  transform: translateY(-50%);
-  font-size: 1rem; /* Adjust font size as needed */
+  right: 20px; /* Align to the right */
+
+  color: #69a5ff;
+  font-weight: bold;
+  font-size: 2.0rem;
 }

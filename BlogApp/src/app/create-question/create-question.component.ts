@@ -31,7 +31,6 @@ export class CreateQuestionComponent implements OnInit {
 
     this.questionService.askQuestion(questionData).subscribe({
       next: () => {
-        console.log('Question submitted successfully.');
         // Redirect to the My Questions page after successful submission
         this.router.navigate(['/my-question-list']);
       },

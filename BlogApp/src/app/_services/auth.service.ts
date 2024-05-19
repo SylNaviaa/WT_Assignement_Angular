@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private baseUrl: string = 'https://wt-assignement-angular-1.onrender.com/user';
+  private baseUrl: string = 'https://wt-assignement-angular.onrender.com/user';
 
   constructor(private router:Router,private http:HttpClient) { }
 

@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit {
       next: data => {
         // Store token from response data
         this.auth.storeToken(data.token);
-        console.log('Registered token is ' + data.token);
         this.auth.canAuthenticate();
       },
       error: data => {
@@ -39,7 +38,6 @@ export class RegisterComponent implements OnInit {
       }
     }).add(() => {
       this.loading = false;
-      console.log('Register process completed!');
     });
   }
 }

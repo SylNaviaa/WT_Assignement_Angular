@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AnswerService {
 
-  private baseUrl: string = 'https://wt-assignement-angular-1.onrender.com/answer';
+  private baseUrl: string = 'https://wt-assignement-angular.onrender.com/answer';
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -26,11 +26,11 @@ export class AnswerService {
     return this.http.patch<any>(`${this.baseUrl}/delete/${questionId}`, { answerId }, { headers });
   }
 
-  voteAnswer(questionId: string, answerId: string, value: string): Observable<any> {
+  voteAnswer(questionId: string, answerId: string, voteType: string): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     });
-    return this.http.patch<any>(`${this.baseUrl}/vote/${questionId}`, { answerId, value }, { headers });
+    return this.http.patch<any>(`${this.baseUrl}/vote/${questionId}`, { answerId, voteType }, { headers });
   }
 
   getMyAnswers(questionId: string): Observable<any> {
@@ -47,4 +47,7 @@ export class AnswerService {
     return this.http.patch<any>(`${this.baseUrl}/modify/${questionId}`, { answerId, answerBody: newAnswerBody }, { headers });
   }
 
+  getNumberVoteAnswer(questionId: string, answerId: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/getNumberVoteAnswer/${questionId}`, { answerId });
+  }
 }

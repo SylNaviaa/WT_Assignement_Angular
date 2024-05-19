@@ -28,6 +28,7 @@ export class QuestionDetailComponent implements OnInit {
             this.question = data;
             this.fetchUserNames();
             this.fetchMyAnswers(questionId);
+            this.fetchNumberOfVotes(questionId); 
           },
           error: (error) => {
             console.error('Error fetching question detail:', error);
@@ -67,7 +68,6 @@ export class QuestionDetailComponent implements OnInit {
     // Call the postAnswer method from AnswerService
     this.answerService.postAnswer(this.question._id, this.newAnswerBody).subscribe({
       next: (data: any) => {
-        console.log('Answer posted successfully:', data);
         // Clear the newAnswerBody after posting
         this.newAnswerBody = '';
         // You may want to refresh the question detail view to reflect the new answer
@@ -83,7 +83,6 @@ export class QuestionDetailComponent implements OnInit {
     const questionId = this.question._id;
     this.answerService.deleteAnswer(questionId, answerId).subscribe({
       next: () => {
-        console.log('Answer deleted successfully.');
         // You may want to refresh the question detail view to reflect the deleted answer
         this.ngOnInit();
       },
@@ -97,7 +96,6 @@ export class QuestionDetailComponent implements OnInit {
     const questionId = this.question._id;
     this.answerService.voteAnswer(questionId, answerId, value).subscribe({
       next: (data: any) => {
-        console.log('Vote recorded successfully:', data);
         // You may want to refresh the question detail view to reflect the vote
         this.ngOnInit();
       },
@@ -120,7 +118,6 @@ export class QuestionDetailComponent implements OnInit {
     // Call the updateAnswer method from AnswerService
     this.answerService.modifyAnswer(this.question._id, this.editingAnswer._id, this.newAnswerBody).subscribe({
       next: (data: any) => {
-        console.log('Answer updated successfully:', data);
         // Clear the newAnswerBody after updating
         this.newAnswerBody = '';
         // Reset the editingAnswer property
@@ -134,4 +131,17 @@ export class QuestionDetailComponent implements OnInit {
     });
   }
 
+    // Fetch number of votes for answers
+    fetchNumberOfVotes(questionId: string): void {
+      this.question.answer.forEach((answer: any) => {
+        this.answerService.getNumberVoteAnswer(questionId, answer._id).subscribe({
+          next: (data: any) => {
+            answer.voteCount = data.voteCount; // Update answer with vote count
+          },
+          error: (error) => {
+            console.error('Error fetching vote count for answer:', error);
+          }
+        });
+      });
+    }
 }

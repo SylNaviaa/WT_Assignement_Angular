@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="card">
-  <div *ngIf="question">
+    <div *ngIf="question">
       <div *ngIf="question">
         <h3 class="titlePage">{{ question.questionTitle }} </h3>
         <h3 class="questionContent">{{ question.questionBody }} </h3>
@@ -10,159 +10,94 @@
         <h3 class="questionNumberAnswer">Number of Answers: {{ question.noOfAnswers }} </h3>
       </div>
 
-    <!-- My Answer Section -->
-    <h1 class="card__title">My Answers</h1>
-    <div *ngIf="myAnswers.length > 0">
-      <div *ngFor="let myAnswer of myAnswers" class="card-question">
-        <div class="card__content">{{ myAnswer.answerBody }} </div>
-        <div class="card__date">{{ myAnswer.answeredOn| date:'medium' }} </div>
-        <div class="card-buttons">
-          <button class="bin-button" (click)="deleteAnswer(myAnswer._id)">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 39 7" class="bin-top">
-              <line stroke-width="4" stroke="white" y2="5" x2="39" y1="5"></line>
-              <line stroke-width="3" stroke="white" y2="1.5" x2="26.0357" y1="1.5" x1="12"></line>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 33 39" class="bin-bottom">
-              <mask fill="white" id="path-1-inside-1_8_19">
-                <path d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"></path>
-              </mask>
-              <path mask="url(#path-1-inside-1_8_19)" fill="white"
-                d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z">
-              </path>
-              <path stroke-width="4" stroke="white" d="M12 6L12 29"></path>
-              <path stroke-width="4" stroke="white" d="M21 6V29"></path>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 89 80" class="garbage">
-              <path fill="white"
-                d="M20.5 10.5L37.5 15.5L42.5 11.5L51.5 12.5L68.75 0L72 11.5L79.5 12.5H88.5L87 22L68.75 31.5L75.5066 25L86 26L87 35.5L77.5 48L70.5 49.5L80 50L77.5 71.5L63.5 58.5L53.5 68.5L65.5 70.5L45.5 73L35.5 79.5L28 67L16 63L12 51.5L0 48L16 25L22.5 17L20.5 10.5Z">
-              </path>
-            </svg>
-          </button>
-          <button (click)="editAnswer(myAnswer)">Edit</button>
+      <!-- My Answer Section -->
+      <h1 class="card__title">My Answers</h1>
+      <div *ngIf="myAnswers.length > 0">
+        <div *ngFor="let myAnswer of myAnswers" class="card-question">
+          <div class="card__content">{{ myAnswer.answerBody }} </div>
+          <div class="card__date">{{ myAnswer.answeredOn| date:'medium' }} </div>
+          <hr>
+          <div class="card-buttons">
+            <button class="bin-button" (click)="deleteAnswer(myAnswer._id)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 39 7" class="bin-top">
+                <line stroke-width="4" stroke="white" y2="5" x2="39" y1="5"></line>
+                <line stroke-width="3" stroke="white" y2="1.5" x2="26.0357" y1="1.5" x1="12"></line>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 33 39" class="bin-bottom">
+                <mask fill="white" id="path-1-inside-1_8_19">
+                  <path d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"></path>
+                </mask>
+                <path mask="url(#path-1-inside-1_8_19)" fill="white"
+                  d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z">
+                </path>
+                <path stroke-width="4" stroke="white" d="M12 6L12 29"></path>
+                <path stroke-width="4" stroke="white" d="M21 6V29"></path>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 89 80" class="garbage">
+                <path fill="white"
+                  d="M20.5 10.5L37.5 15.5L42.5 11.5L51.5 12.5L68.75 0L72 11.5L79.5 12.5H88.5L87 22L68.75 31.5L75.5066 25L86 26L87 35.5L77.5 48L70.5 49.5L80 50L77.5 71.5L63.5 58.5L53.5 68.5L65.5 70.5L45.5 73L35.5 79.5L28 67L16 63L12 51.5L0 48L16 25L22.5 17L20.5 10.5Z">
+                </path>
+              </svg>
+            </button>
+            <button (click)="editAnswer(myAnswer)">Edit</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Edit answer form -->
-    <div *ngIf="editingAnswer">
-      <div class="card-question">
-        <h1 class="card__title">Edit Answer</h1>
-        <form (submit)="saveEditedAnswer()">
-          <div class="form-group">
-            <textarea class="form-control" id="editAnswerBody" rows="5" [(ngModel)]="newAnswerBody"
-              name="newAnswerBody"></textarea>
-          </div>
-          <button class="button" type="submit" class="btn btn-primary">Save</button>
-        </form>
+      <!-- Edit answer form -->
+      <div *ngIf="editingAnswer">
+        <div class="card-question">
+          <h1 class="card__title">Edit Answer</h1>
+          <form (submit)="saveEditedAnswer()">
+            <div class="form-group">
+              <textarea class="form-control" id="editAnswerBody" rows="5" [(ngModel)]="newAnswerBody"
+                name="newAnswerBody"></textarea>
+            </div>
+            <button class="button" type="submit" class="btn btn-primary">Save</button>
+          </form>
+        </div>
       </div>
-    </div>
 
-    <!-- Add a line here -->
-    <hr class="section-divider">
+      <!-- Add a line here -->
+      <hr class="section-divider">
 
-    <h1 class="titlePage">Answers</h1>
-    <div *ngFor="let answer of question.answer" class="card-question">
-      <div class="card__content">{{ answer.answerBody }} </div>
-      <div class="questionNumberAnswer">Answered By: {{ answer.userName }}</div>
-      <div class="card__date">{{ answer.answeredOn| date:'medium' }} </div>
-      <div class="upvote-container">
-        <span class="digit">0 </span> <!-- Add this line -->
-        <svg id="upvoteGlyph" version="1.1" viewBox="0 0 32 32" (click)="voteAnswer(answer._id, 'upVote')">
-          <path
-            d="M29.845,17.099l-2.489,8.725C26.989,27.105,25.804,28,24.473,28H11c-0.553,0-1-0.448-1-1V13c0-0.215,0.069-0.425,0.198-0.597l5.392-7.24C16.188,4.414,17.05,4,17.974,4C19.643,4,21,5.357,21,7.026V12h5.002c1.265,0,2.427,0.579,3.188,1.589C29.954,14.601,30.192,15.88,29.845,17.099z"
-            id="XMLID_254_"></path>
-          <path
-            d="M7,12H3c-0.553,0-1,0.448-1,1v14c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1V13C8,12.448,7.553,12,7,12z   M5,25.5c-0.828,0-1.5-0.672-1.5-1.5c0-0.828,0.672-1.5,1.5-1.5c0.828,0,1.5,0.672,1.5,1.5C6.5,24.828,5.828,25.5,5,25.5z"
-            id="XMLID_256_"></path>
-        </svg>
-        <svg id="downvoteGlyph" version="1.1" viewBox="0 0 32 32" (click)="voteAnswer(answer._id, 'downVote')">
-          <path
-            d="M2.156,14.901l2.489-8.725C5.012,4.895,6.197,4,7.528,4h13.473C21.554,4,22,4.448,22,5v14  c0,0.215-0.068,0.425-0.197,0.597l-5.392,7.24C15.813,27.586,14.951,28,14.027,28c-1.669,0-3.026-1.357-3.026-3.026V20H5.999  c-1.265,0-2.427-0.579-3.188-1.589C2.047,17.399,1.809,16.12,2.156,14.901z"
-            id="XMLID_259_"></path>
-          <path
-            d="M25.001,20h4C29.554,20,30,19.552,30,19V5c0-0.552-0.446-1-0.999-1h-4c-0.553,0-1,0.448-1,1v14  C24.001,19.552,24.448,20,25.001,20z M27.001,6.5c0.828,0,1.5,0.672,1.5,1.5c0,0.828-0.672,1.5-1.5,1.5c-0.828,0-1.5-0.672-1.5-1.5  C25.501,7.172,26.173,6.5,27.001,6.5z"
-            id="XMLID_260_"></path>
-        </svg>
+      <h1 class="titlePage">Answers</h1>
+      <div *ngFor="let answer of question.answer" class="card-question">
+        <div class="digit">{{ answer.voteDifference }}</div>
+        <div class="card__content">{{ answer.answerBody }} </div>
+        <div class="questionNumberAnswer">Answered By: {{ answer.userName }}</div>
+        <div class="card__date">{{ answer.answeredOn| date:'medium' }} </div>
+        <hr>
+        <div class="upvote-container">
+          <svg id="upvoteGlyph" version="1.1" viewBox="0 0 32 32" (click)="voteAnswer(answer._id, 'upVote')">
+            <path
+              d="M29.845,17.099l-2.489,8.725C26.989,27.105,25.804,28,24.473,28H11c-0.553,0-1-0.448-1-1V13c0-0.215,0.069-0.425,0.198-0.597l5.392-7.24C16.188,4.414,17.05,4,17.974,4C19.643,4,21,5.357,21,7.026V12h5.002c1.265,0,2.427,0.579,3.188,1.589C29.954,14.601,30.192,15.88,29.845,17.099z"
+              id="XMLID_254_"></path>
+            <path
+              d="M7,12H3c-0.553,0-1,0.448-1,1v14c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1V13C8,12.448,7.553,12,7,12z   M5,25.5c-0.828,0-1.5-0.672-1.5-1.5c0-0.828,0.672-1.5,1.5-1.5c0.828,0,1.5,0.672,1.5,1.5C6.5,24.828,5.828,25.5,5,25.5z"
+              id="XMLID_256_"></path>
+          </svg>
+          <svg id="downvoteGlyph" version="1.1" viewBox="0 0 32 32" (click)="voteAnswer(answer._id, 'downVote')">
+            <path
+              d="M2.156,14.901l2.489-8.725C5.012,4.895,6.197,4,7.528,4h13.473C21.554,4,22,4.448,22,5v14  c0,0.215-0.068,0.425-0.197,0.597l-5.392,7.24C15.813,27.586,14.951,28,14.027,28c-1.669,0-3.026-1.357-3.026-3.026V20H5.999  c-1.265,0-2.427-0.579-3.188-1.589C2.047,17.399,1.809,16.12,2.156,14.901z"
+              id="XMLID_259_"></path>
+            <path
+              d="M25.001,20h4C29.554,20,30,19.552,30,19V5c0-0.552-0.446-1-0.999-1h-4c-0.553,0-1,0.448-1,1v14  C24.001,19.552,24.448,20,25.001,20z M27.001,6.5c0.828,0,1.5,0.672,1.5,1.5c0,0.828-0.672,1.5-1.5,1.5c-0.828,0-1.5-0.672-1.5-1.5  C25.501,7.172,26.173,6.5,27.001,6.5z"
+              id="XMLID_260_"></path>
+          </svg>
+        </div>
       </div>
-      <hr>
+
+
+      <!-- Form to Submit New Answer -->
+      <form (submit)="submitAnswer()">
+        <div class="form-group">
+          <h1 class="card__title">Your Answer:</h1>
+          <textarea class="form-control" id="answerBody" rows="5" [(ngModel)]="newAnswerBody"
+            name="newAnswerBody"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Answer</button>
+      </form>
     </div>
-
-
-    <h1 class="titlePage">Answers</h1>
-<div *ngFor="let answer of question.answer" class="card-question">
-  <span class="digit upvote-digit">0</span> <!-- Upvote digit -->
-  <div class="card__content">{{ answer.answerBody }} </div>
-  <span class="digit downvote-digit">0</span> <!-- Downvote digit -->
-  <div class="questionNumberAnswer">Answered By: {{ answer.userName }}</div>
-  <div class="card__date">{{ answer.answeredOn| date:'medium' }} </div>
-  <div class="upvote-container">
-    <svg id="upvoteGlyph" version="1.1" viewBox="0 0 32 32" (click)="voteAnswer(answer._id, 'upVote')">
-      <path
-            d="M29.845,17.099l-2.489,8.725C26.989,27.105,25.804,28,24.473,28H11c-0.553,0-1-0.448-1-1V13c0-0.215,0.069-0.425,0.198-0.597l5.392-7.24C16.188,4.414,17.05,4,17.974,4C19.643,4,21,5.357,21,7.026V12h5.002c1.265,0,2.427,0.579,3.188,1.589C29.954,14.601,30.192,15.88,29.845,17.099z"
-            id="XMLID_254_"></path>
-          <path
-            d="M7,12H3c-0.553,0-1,0.448-1,1v14c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1V13C8,12.448,7.553,12,7,12z   M5,25.5c-0.828,0-1.5-0.672-1.5-1.5c0-0.828,0.672-1.5,1.5-1.5c0.828,0,1.5,0.672,1.5,1.5C6.5,24.828,5.828,25.5,5,25.5z"
-            id="XMLID_256_"></path>
-    </svg>
-  </div>
-  <div class="downvote-container">
-    <svg id="downvoteGlyph" version="1.1" viewBox="0 0 32 32" (click)="voteAnswer(answer._id, 'downVote')">
-      <path
-      d="M2.156,14.901l2.489-8.725C5.012,4.895,6.197,4,7.528,4h13.473C21.554,4,22,4.448,22,5v14  c0,0.215-0.068,0.425-0.197,0.597l-5.392,7.24C15.813,27.586,14.951,28,14.027,28c-1.669,0-3.026-1.357-3.026-3.026V20H5.999  c-1.265,0-2.427-0.579-3.188-1.589C2.047,17.399,1.809,16.12,2.156,14.901z"
-      id="XMLID_259_"></path>
-    <path
-      d="M25.001,20h4C29.554,20,30,19.552,30,19V5c0-0.552-0.446-1-0.999-1h-4c-0.553,0-1,0.448-1,1v14  C24.001,19.552,24.448,20,25.001,20z M27.001,6.5c0.828,0,1.5,0.672,1.5,1.5c0,0.828-0.672,1.5-1.5,1.5c-0.828,0-1.5-0.672-1.5-1.5  C25.501,7.172,26.173,6.5,27.001,6.5z"
-      id="XMLID_260_"></path>
-    </svg>
-  </div>
-  <hr>
-</div>
-
-    
-    <h1 class="titlePage">Answers</h1>
-<div *ngFor="let answer of question.answer" class="card-question">
-  <div class="card__content">{{ answer.answerBody }} </div>
-  <div class="questionNumberAnswer">Answered By: {{ answer.userName }}</div>
-  <div class="card__date">{{ answer.answeredOn| date:'medium' }} </div>
-  <div class="upvote-container">
-    <span class="digit">0</span> <!-- Add this line -->
-    <svg id="upvoteGlyph" version="1.1" viewBox="0 0 32 32" (click)="voteAnswer(answer._id, 'upVote')">
-      <!-- Upvote SVG paths -->
-      <path
-            d="M29.845,17.099l-2.489,8.725C26.989,27.105,25.804,28,24.473,28H11c-0.553,0-1-0.448-1-1V13c0-0.215,0.069-0.425,0.198-0.597l5.392-7.24C16.188,4.414,17.05,4,17.974,4C19.643,4,21,5.357,21,7.026V12h5.002c1.265,0,2.427,0.579,3.188,1.589C29.954,14.601,30.192,15.88,29.845,17.099z"
-            id="XMLID_254_"></path>
-          <path
-            d="M7,12H3c-0.553,0-1,0.448-1,1v14c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1V13C8,12.448,7.553,12,7,12z   M5,25.5c-0.828,0-1.5-0.672-1.5-1.5c0-0.828,0.672-1.5,1.5-1.5c0.828,0,1.5,0.672,1.5,1.5C6.5,24.828,5.828,25.5,5,25.5z"
-            id="XMLID_256_"></path>
-    </svg>
-  </div>
-  <div class="downvote-container">
-    <span class="digit">0</span> <!-- Add this line -->
-    <svg id="downvoteGlyph" version="1.1" viewBox="0 0 32 32" (click)="voteAnswer(answer._id, 'downVote')">
-      <!-- Downvote SVG paths -->
-      <path
-            d="M2.156,14.901l2.489-8.725C5.012,4.895,6.197,4,7.528,4h13.473C21.554,4,22,4.448,22,5v14  c0,0.215-0.068,0.425-0.197,0.597l-5.392,7.24C15.813,27.586,14.951,28,14.027,28c-1.669,0-3.026-1.357-3.026-3.026V20H5.999  c-1.265,0-2.427-0.579-3.188-1.589C2.047,17.399,1.809,16.12,2.156,14.901z"
-            id="XMLID_259_"></path>
-          <path
-            d="M25.001,20h4C29.554,20,30,19.552,30,19V5c0-0.552-0.446-1-0.999-1h-4c-0.553,0-1,0.448-1,1v14  C24.001,19.552,24.448,20,25.001,20z M27.001,6.5c0.828,0,1.5,0.672,1.5,1.5c0,0.828-0.672,1.5-1.5,1.5c-0.828,0-1.5-0.672-1.5-1.5  C25.501,7.172,26.173,6.5,27.001,6.5z"
-            id="XMLID_260_"></path>
-    </svg>
-  </div>
-  <hr>
-</div>
-
-
-
-
-    <!-- Form to Submit New Answer -->
-    <form (submit)="submitAnswer()">
-      <div class="form-group">
-        <h1 class="card__title">Your Answer:</h1>
-        <textarea class="form-control" id="answerBody" rows="5" [(ngModel)]="newAnswerBody"
-          name="newAnswerBody"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit Answer</button>
-    </form>
-  </div>
   </div>
 </div>
