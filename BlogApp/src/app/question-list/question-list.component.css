@@ -42,7 +42,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0;
-  background-color: #f3f3f4; /* Optional: Change background color */
+  background-color: #e0ecfb; /* Optional: Change background color */
 }
 
 .group {
@@ -63,14 +63,14 @@ body {
 
 .card {
   --border-radius: 0.75rem;
-  --primary-color: #7257fa;
+  --primary-color: #69a5ff;
   --secondary-color: #3c3852;
   width: 300px; /* Adjust width for larger cards */
   font-family: "Arial";
   padding: 1rem;
   cursor: pointer;
   border-radius: var(--border-radius);
-  background: #f1f1f3;
+  background: #f4f9ff;
   box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 3%);
   position: relative;
   margin: 1rem; /* Optional: Adjust margin */
@@ -98,9 +98,9 @@ body {
 .input:focus,
 .input:hover {
   outline: none;
-  border-color: rgba(247, 127, 0, 0.4);
+  border-color: rgba(66, 154, 255, 0.4);
   background-color: #fff;
-  box-shadow: 0 0 0 4px rgb(247 127 0 / 10%);
+  box-shadow: 0 0 0 4px rgba(57, 168, 241, 0.1);
 }
 
 .icon {
@@ -157,7 +157,7 @@ body {
 }
 
 .card:hover .card__arrow {
-  background: #111;
+  background: #0066ff;
 }
 
 .card:hover .card__arrow svg {

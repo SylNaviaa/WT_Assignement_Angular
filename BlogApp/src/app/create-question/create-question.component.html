@@ -1,23 +1,29 @@
 <app-navbar></app-navbar>
 
-<div class="form-container">
-  <a href="#" class="btn-shine">Create a New Question</a>
-  
-  <form class="form" (submit)="submitQuestion()">
-    <div class="form-group">
-      <div class="input-form">
-        <input type="text" class="input" id="questionTitle" [(ngModel)]="questionTitle" name="questionTitle" required>
-        <label class="textUser" for="questionTitle">Question Title</label>
+<div class="container">
+  <div class="form-container">
+    <form class="form" (submit)="submitQuestion()">
+      <div class="form-group">
+        <div class="input-form">
+          <label class="textUser" for="questionTitle">Title</label>
+          <input type="text" class="input" id="questionTitle" [(ngModel)]="questionTitle" name="questionTitle" required>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="input-form">
-        <textarea class="input" id="questionBody" rows="5" [(ngModel)]="questionBody" name="questionBody" required></textarea>
-        <label class="textUser" for="questionBody">Question Body</label>
+      <div class="form-group">
+        <div class="input-form">
+          <label class="textUser" for="questionBody">Description</label>
+          <textarea class="inputBody" id="questionBody" rows="5" [(ngModel)]="questionBody" name="questionBody"
+            required></textarea>
+        </div>
       </div>
-    </div>
-    <button type="submit" class="form-submit-btn">Submit
-      <span></span>
-    </button>
-  </form>
+      <button type="submit" class="form-submit-btn">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="none" d="M0 0h24v24H0z"></path>
+            <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
+          </svg> Create
+        </span>
+      </button>
+    </form>
+  </div>
 </div>

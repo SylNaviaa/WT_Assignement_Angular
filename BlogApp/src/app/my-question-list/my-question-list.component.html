@@ -2,17 +2,22 @@
 
 <div class="flex flex-col items-center justify-center">
   <div class="group">
-    <button class="button" (click)="createQuestion()">New Question
-      <span></span>
+    <button class="button" (click)="createQuestion()">
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"></path>
+          <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
+        </svg> Create
+      </span>
     </button>
   </div>
 </div>
 
 <div class="questions-container">
-  <div *ngFor="let question of questions" class="card" (click)="viewQuestionDetail(question._id)">
-    <h3 class="card__title">{{ question.questionTitle }}</h3>
-    <p class="card__content">{{ question.questionBody }}</p>
-    <div class="card__date">{{ question.askedOn | date: 'MMMM d, yyyy' }}</div>
+  <div *ngFor="let question of questions" class="card">
+    <h3 class="card__title" (click)="viewQuestionDetail(question._id)">{{ question.questionTitle }} </h3>
+    <div class="card__date" (click)="viewQuestionDetail(question._id)">{{ question.askedOn | date: 'MMMM d, yyyy' }}
+    </div>
     <div class="card-buttons">
       <!-- Existing Delete Button -->
       <!-- Updated Delete Button -->
@@ -40,7 +45,9 @@
     </div>
     <div class="card__arrow" (click)="viewQuestionDetail(question._id)">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="15" width="15">
-        <path fill="#fff" d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z"></path>
+        <path fill="#fff"
+          d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z">
+        </path>
       </svg>
     </div>
   </div>

@@ -1,4 +1,37 @@
 /* Your existing CSS for other components */
+
+
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+
+button {
+  border: 2px solid #69a5ff;
+  background-color: #69a5ff;
+  border-radius: 0.9em;
+  padding: 0.8em 1.2em 0.8em 1em;
+  transition: all ease-in-out 0.2s;
+  font-size: 16px;
+ }
+ 
+ button span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 600;
+ }
+ 
+ button:hover {
+  background-color: #0066ff;
+ }
+
+ 
 .flex {
   display: flex;
   padding-top: 1%;
@@ -63,7 +96,7 @@ body {
 
 .card {
   --border-radius: 0.75rem;
-  --primary-color: #7257fa;
+  --primary-color: #69a5ff;
   --secondary-color: #3c3852;
   width: 300px; /* Adjust width for larger cards */
   font-family: "Arial";
@@ -86,7 +119,7 @@ body {
   border: 2px solid transparent;
   border-radius: 8px;
   outline: none;
-  background-color: #f3f3f4;
+  background-color: #e0ecfb;
   color: #0d0c22;
   transition: 0.3s ease;
 }
@@ -97,6 +130,32 @@ body {
 
 .input:focus,
 .input:hover {
+  outline: none;
+  border-color: #4285f4; /* Change to blue theme */
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(66 133 244 / 10%); /* Change to blue theme */
+}
+
+.inputBody {
+  width: 100%;
+  height: 250px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #e0ecfb;
+  color: #0d0c22;
+  transition: 0.3s ease;
+}
+
+.inputBody::placeholder {
+  color: #9e9ea7;
+}
+
+.inputBody:focus,
+.inputBody:hover {
   outline: none;
   border-color: #4285f4; /* Change to blue theme */
   background-color: #fff;
@@ -166,8 +225,8 @@ body {
 
 /* Modified CSS for the form container */
 .form-container {
-  width: 400px;
-  background: #e1e1e1; /* Lighter background */
+  width: 1000px;
+  background: #f4f9ff; /* Lighter background */
   border: 2px solid #4285f4; /* Blue border */
   padding: 32px 24px;
   font-size: 14px;

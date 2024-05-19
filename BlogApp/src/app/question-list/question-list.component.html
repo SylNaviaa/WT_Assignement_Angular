@@ -22,7 +22,6 @@
 <div class="questions-container">
   <div *ngFor="let question of questions" class="card" (click)="viewQuestionDetail(question._id)">
     <h3 class="card__title">{{ question.questionTitle }}</h3>
-    <p class="card__content">{{ question.questionBody }}</p>
     <div class="card__date">{{ question.askedOn | date: 'MMMM d, yyyy' }}</div>
     <div class="card__arrow" (click)="viewQuestionDetail(question._id)">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="15" width="15">
