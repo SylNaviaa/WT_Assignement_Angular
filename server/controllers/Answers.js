@@ -111,38 +111,52 @@ export const voteAnswer = async (req, res) => {
     }
 
     try {
-        const question = await Questions.findById(_id)
-        const answer = question.answer.find((ans) => ans._id == answerId)
+        const question = await Questions.findById(_id);
+        const answer = question.answers.find((ans) => ans._id == answerId);
+        
+        if (!answer) {
+            return res.status(404).send('answer not found...');
+        }
+
         if (answer.userId === userId) {
-            return res.status(401).send('You can not vote your answer...')
+            return res.status(401).send('You cannot vote on your own answer...');
         }
-        if (answer.upVote.includes(userId) || answer.downVote.includes(userId)) {
-            return res.status(401).send('You can only vote once...')
-        }
-        console.log(voteType)
+
+        const hasUpvoted = answer.upVote.includes(userId);
+        const hasDownvoted = answer.downVote.includes(userId);
+
         if (voteType === 'upVote') {
-            if (answer.upVote.includes(userId)) {
-                answer.upVote = answer.upVote.filter((id) => id !== userId)
+            if (hasUpvoted) {
+                // Remove upvote
+                answer.upVote = answer.upVote.filter((id) => id !== userId);
             } else {
-                answer.upVote.push(userId)
-                answer.downVote = answer.downVote.filter((id) => id !== userId)
+                // Remove downvote if exists, then add upvote
+                answer.downVote = answer.downVote.filter((id) => id !== userId);
+                if (!hasDownvoted) {
+                    answer.upVote.push(userId);
+                }
             }
         } else if (voteType === 'downVote') {
-            if (answer.downVote.includes(userId)) {
-                answer.downVote = answer.downVote.filter((id) => id !== userId)
+            if (hasDownvoted) {
+                // Remove downvote
+                answer.downVote = answer.downVote.filter((id) => id !== userId);
             } else {
-                answer.downVote.push(userId)
-                answer.upVote = answer.upVote.filter((id) => id !== userId)
+                // Remove upvote if exists, then add downvote
+                answer.upVote = answer.upVote.filter((id) => id !== userId);
+                if (!hasUpvoted) {
+                    answer.downVote.push(userId);
+                }
             }
         } else {
-            return res.status(404).send('Invalid vote type...')
+            return res.status(404).send('Invalid vote type...');
         }
-        await Questions.findByIdAndUpdate(_id, question)
-        res.status(200).json(question)
+
+        await question.save();  // Save the updated question
+        res.status(200).json(question);
     } catch (error) {
-        res.status(404).json(error)
+        res.status(404).json({ message: error.message });
     }
-}
+};
 
 export const getNumberVoteAnswer = async (req, res) => {
     const { id: _id } = req.params;
