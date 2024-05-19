@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class QuestionService {
-  private baseUrl = 'http://localhost:5000/questions';
+  private baseUrl = 'https://wt-assignement-angular-1.onrender.com/questions';
 
   constructor(private http: HttpClient) { }
 

@@ -9,7 +9,6 @@
   margin-top: 5%;
 }
 
-
 button {
   border: 2px solid #69a5ff;
   background-color: #69a5ff;
@@ -17,21 +16,21 @@ button {
   padding: 0.8em 1.2em 0.8em 1em;
   transition: all ease-in-out 0.2s;
   font-size: 16px;
- }
- 
- button span {
+}
+
+button span {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   font-weight: 600;
- }
- 
- button:hover {
-  background-color: #0066ff;
- }
+}
 
- 
+button:hover {
+  background-color: #0066ff;
+}
+
+
 .flex {
   display: flex;
   padding-top: 1%;
@@ -50,7 +49,8 @@ button {
 }
 
 .btn-shine {
-  margin-bottom: 20px; /* Space between the title and search bar */
+  margin-bottom: 20px;
+  /* Space between the title and search bar */
 }
 
 .group {
@@ -58,14 +58,16 @@ button {
   line-height: 28px;
   align-items: center;
   position: relative;
-  margin-bottom: 30px; /* Space between search bar and questions */
+  margin-bottom: 30px;
+  /* Space between search bar and questions */
 }
 
 .questions-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px; /* Space between question cards */
+  gap: 20px;
+  /* Space between question cards */
 }
 
 body {
@@ -75,7 +77,8 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0;
-  background-color: #f3f3f4; /* Optional: Change background color */
+  background-color: #f3f3f4;
+  /* Optional: Change background color */
 }
 
 .group {
@@ -83,22 +86,26 @@ body {
   line-height: 28px;
   align-items: center;
   position: relative;
-  max-width: 300px; /* Increase width for better appearance */
-  margin-bottom: 30px; /* Space between search bar and questions */
+  max-width: 300px;
+  /* Increase width for better appearance */
+  margin-bottom: 30px;
+  /* Space between search bar and questions */
 }
 
 .questions-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px; /* Space between question cards */
+  gap: 20px;
+  /* Space between question cards */
 }
 
 .card {
   --border-radius: 0.75rem;
   --primary-color: #69a5ff;
   --secondary-color: #3c3852;
-  width: 300px; /* Adjust width for larger cards */
+  width: 300px;
+  /* Adjust width for larger cards */
   font-family: "Arial";
   padding: 1rem;
   cursor: pointer;
@@ -106,7 +113,8 @@ body {
   background: #f1f1f3;
   box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 3%);
   position: relative;
-  margin: 1rem; /* Optional: Adjust margin */
+  margin: 1rem;
+  /* Optional: Adjust margin */
 }
 
 /* Other existing CSS */
@@ -131,9 +139,11 @@ body {
 .input:focus,
 .input:hover {
   outline: none;
-  border-color: #4285f4; /* Change to blue theme */
+  border-color: #4285f4;
+  /* Change to blue theme */
   background-color: #fff;
-  box-shadow: 0 0 0 4px rgb(66 133 244 / 10%); /* Change to blue theme */
+  box-shadow: 0 0 0 4px rgb(66 133 244 / 10%);
+  /* Change to blue theme */
 }
 
 .inputBody {
@@ -157,81 +167,25 @@ body {
 .inputBody:focus,
 .inputBody:hover {
   outline: none;
-  border-color: #4285f4; /* Change to blue theme */
+  border-color: #4285f4;
+  /* Change to blue theme */
   background-color: #fff;
-  box-shadow: 0 0 0 4px rgb(66 133 244 / 10%); /* Change to blue theme */
-}
-
-.icon {
-  position: absolute;
-  left: 1rem;
-  fill: #9e9ea7;
-  width: 1rem;
-  height: 1rem;
-}
-
-/* Hover effects and other styles for cards */
-.card > * + * {
-  margin-top: 1.1em;
-}
-
-.card .card__content {
-  color: var(--secondary-color);
-  font-size: 0.86rem;
-}
-
-.card .card__title {
-  padding: 0;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-.card .card__date {
-  color: #6e6b80;
-  font-size: 0.8rem;
-}
-
-.card .card__arrow {
-  position: absolute;
-  background: var(--primary-color);
-  padding: 0.4rem;
-  border-top-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-  bottom: 0;
-  right: 0;
-  transition: 0.2s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card svg {
-  transition: 0.2s;
-}
-
-/* hover */
-.card:hover .card__title {
-  color: var(--primary-color);
-  text-decoration: underline;
-}
-
-.card:hover .card__arrow {
-  background: #111;
-}
-
-.card:hover .card__arrow svg {
-  transform: translateX(3px);
+  box-shadow: 0 0 0 4px rgb(66 133 244 / 10%);
+  /* Change to blue theme */
 }
 
 /* Modified CSS for the form container */
 .form-container {
   width: 1000px;
-  background: #f4f9ff; /* Lighter background */
-  border: 2px solid #4285f4; /* Blue border */
+  background: #f4f9ff;
+  /* Lighter background */
+  border: 2px solid #4285f4;
+  /* Blue border */
   padding: 32px 24px;
   font-size: 14px;
   font-family: inherit;
-  color: #0d0c22; /* Darker text color */
+  color: #0d0c22;
+  /* Darker text color */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -240,13 +194,17 @@ body {
 }
 
 .form-submit-btn {
-  background: #4285f4; /* Blue button background */
-  color: white; /* White button text color */
-  border: 1px solid #4285f4; /* Blue button border */
+  background: #4285f4;
+  /* Blue button background */
+  color: white;
+  /* White button text color */
+  border: 1px solid #4285f4;
+  /* Blue button border */
 }
 
 .form-submit-btn:hover {
-  background-color: #0d47a1; /* Darker blue on hover */
-  border-color: #0d47a1; /* Darker blue border on hover */
+  background-color: #0d47a1;
+  /* Darker blue on hover */
+  border-color: #0d47a1;
+  /* Darker blue border on hover */
 }
-
